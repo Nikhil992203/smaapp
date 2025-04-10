@@ -1,10 +1,13 @@
 package equ.cjc.main.model;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Id;
+import jakarta.persistence.*;   // shortcut for all packages
+import lombok.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+
+
 @Data
 @Entity
 public class Student {
@@ -20,5 +23,4 @@ public class Student {
 	private String batchMode;
 	private double feesPaid;
 	
-
 }

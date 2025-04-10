@@ -1,26 +1,103 @@
 @charset "ISO-8859-1";
-.gradient-custom-2 {
-/* fallback for old browsers */
-background: #fccb90;
 
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+/* ====== General Reset and Background ====== */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
 }
 
+/* ====== Gradient Background for Card Area ====== */
+.gradient-custom, .gradient-form {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ====== Gradient Background for Side or Card (Your Provided Style) ====== */
+.gradient-custom-2 {
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+/* ====== Responsive Height for Form Section ====== */
 @media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
+    .gradient-form {
+        height: 100vh !important;
+    }
 }
-}
+
+/* ====== Rounded Corners for Larger Screens ====== */
 @media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
+    .gradient-custom-2 {
+        border-top-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
 }
+
+/* ====== Card Styling ====== */
+.card {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-.small mb-0{
-	color: aqua;
+
+/* ====== Input Field Styling ====== */
+.form-outline {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #b44593;
+    box-shadow: 0 0 0 0.2rem rgba(180, 69, 147, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* ====== Label Styling ====== */
+.form-label {
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+    font-size: 0.875rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0 0.25rem;
+    color: #ccc;
+}
+
+/* ====== Button Styling ====== */
+.btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* ====== Marquee Message ====== */
+marquee {
+    padding: 10px 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* ====== Fixing the class name: .small.mb-0 ====== */
+.small.mb-0 {
+    color: aqua;
 }

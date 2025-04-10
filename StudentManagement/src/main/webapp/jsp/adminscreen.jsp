@@ -6,229 +6,238 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-	crossorigin="anonymous">
-<style type="text/css">
+<title>Student Management App</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+	font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+	border: none;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+	text-align: center;
+	font-weight: bold;
+	color: #2c3e50;
+	margin-bottom: 20px;
+}
+
 .enroll {
 	background-image: url("images/addstudent.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
-}
-
-.heading {
-	font-family: cursive;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-form {
-	width: 400px
+	background-position: center;
+	padding-top: 30px;
 }
 
 .view {
 	background-image: url("images/viewstudent.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: center;
+	padding: 30px 10px;
+}
+
+form {
+	background: rgba(255, 255, 255, 0.95);
+	padding: 20px;
+	border-radius: 15px;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-danger:hover {
+	color: white !important;
+}
+
+.navbar-custom {
+	background-color: #f8f9fa;
+	padding: 10px 20px;
+	border-bottom: 2px solid #007bff;
+}
+
+table th, table td {
+	vertical-align: middle;
+}
+
+marquee h1 {
+	font-size: 1.2rem;
+	font-weight: bold;
 }
 </style>
+
+<script>
+function fees() {
+	document.fn.action = "/fees";
+	document.fn.submit();
+}
+function batch() {
+	document.fn.action = "/batch";
+	document.fn.submit();
+}
+function remove() {
+	document.fn.action = "/remove";
+	document.fn.submit();
+}
+</script>
 </head>
 
 <body>
-	<div class="card">
-		<nav class="d-flex justify-content-between p-2 border border-primary">
-			<img src="images/cjc.jpg" width="100px" height="50px">
-			<div class="pt-2">
-				<a href="#enroll">
-					<button class="btn btn-outline-primary">Enroll Student</button>
-				</a> <a href="#view">
-					<button class="btn btn-outline-primary">View Student</button>
-				</a> <a href="/">
-					<button class="btn btn-outline-primary">Logout</button>
-				</a>
+
+	<div class="container-fluid">
+		<!-- Navbar -->
+		<nav class="navbar-custom d-flex justify-content-between align-items-center mb-3">
+			<img src="images/OIP.jpg" width="100" height="50">
+			<div>
+				<a href="#enroll" class="btn btn-outline-primary mx-1">Enroll Student</a>
+				<a href="#view" class="btn btn-outline-primary mx-1">View Student</a>
+				<a href="/" class="btn btn-outline-danger mx-1">Logout</a>
 			</div>
 		</nav>
-		<section class="vh-100 gradient-custom enroll mt-2" id="enroll">
-			<div class="container h-100">
-				<div class="row justify-content-center h-100 w-75">
-					<div class="col-12 col-lg-9 col-xl-7">
-						<div class="card shadow-2-strong card-registration mt-0"
-							style="border-radius: 15px;">
-							<div class="card-body mt-0">
-								<h3 class="heading">Student Enrollment Form</h3>
 
-								<form action="enroll_student">
-									<div class="row ">
-										<div class="col-md-6 mb-2">
-											<div class="form-outline">
-												<input type="text" id="firstName"
-													class="form-control form-control-sm" name="studentFullName" />
-												<label class="form-label" for="firstName">First Full
-													Name</label>
-											</div>
-										</div>
-										<div class="col-md-6 mb-2">
-											<div class="form-outline">
-												<input type="email" id="lastName"
-													class="form-control form-control-sm" name="studentEmail" />
-												<label class="form-label" for="lastName">Student
-													Email</label>
-											</div>
-										</div>
+		<!-- Enroll Section -->
+		<section class="enroll" id="enroll">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="card p-3">
+							<h3 class="heading">Student Enrollment Form</h3>
+							<form action="enroll_student" method="post">
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<input type="text" name="studentFullName" placeholder="Full Name" class="form-control" required>
 									</div>
-									<div class="row">
-										<div class="col-md-6 mb-2 d-flex align-items-center">
-											<div class="form-outline datepicker w-100">
-												<input type="number" class="form-control form-control-sm"
-													id="birthdayDate" name="studentAge" /> <label
-													for="birthdayDate" class="form-label">Student Age</label>
-											</div>
-										</div>
+									<div class="col-md-6">
+										<input type="email" name="studentEmail" placeholder="Email" class="form-control" required>
+									</div>
+								</div>
 
-										<div class="col-md-6 mb-2 pb-2">
-											<div class="form-outline">
-												<input type="tel" id="text"
-													class="form-control form-control-sm"name="studentCollegeName" /> <label class="form-label"
-													for="phoneNumber">Student Collage Name</label>
-											</div>
-										</div>
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<input type="number" name="studentAge" placeholder="Age" class="form-control" required>
 									</div>
-									<div class="row">
-										<div class="col-md-6 mb-2 pb-2">
-											<div class="form-outline">
-												<input type="number" id="emailAddress"
-													class="form-control form-control-sm" name="feesPaid" /> <label
-													class="form-label" for="emailAddress">Fees Paid</label>
-											</div>
-										</div>
-										<div class="col-md-6 mb-2">
-											<h6 class="mb-2 pb-1">Student Course :</h6>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="java" value="Java" checked /> <label
-													class="form-check-label" for="java">Java</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="python" value="Python" /> <label
-													class="form-check-label" for="python">Python</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="testing" value="Testing" /> <label
-													class="form-check-label" for="testing">Testing</label>
-											</div>
-										</div>
+									<div class="col-md-6">
+										<input type="text" name="studentCollegeName" placeholder="College Name" class="form-control" required>
+									</div>
+								</div>
 
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<input type="number" name="feesPaid" placeholder="Fees Paid" class="form-control" required>
 									</div>
-									<div class="row">
-										<div class="col">
-											<select class="select form-control-sm" name="batchMode">
-												<option value="#" disabled>Select Batch Mode</option>
-												<option value="Online">Online</option>
-												<option value="Offline">Offline</option>
+									<div class="col-md-6">
+										<label class="form-label d-block">Student Course:</label>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="studentCourse" value="Java" checked>
+											<label class="form-check-label">Java</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="studentCourse" value="Python">
+											<label class="form-check-label">Python</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="studentCourse" value="Testing">
+											<label class="form-check-label">Testing</label>
+										</div>
+									</div>
+								</div>
 
-											</select> <label class="form-label select-label">Batch Mode</label>
-										</div>
-										<div class="col">
-											<select class="select form-control-sm" name="batchNumber">
-												<option value="#" disabled>Select Batch Number</option>
-												<option value="FDJ-160">FDJ-160</option>
-												<option value="REG-160">REG-160</option>
-												<option value="FDJ-161">FDJ-161</option>
-												<option value="REG-161">REG-162</option>
-												<option value="FDJ-162">FDJ-162</option>
-												<option value="REG-162">REG-162</option>
-												<option value="FDJ-163">FDJ-163</option>
-												<option value="REG-163">REG-163</option>
-												<option value="FDJ-164">FDJ-164</option>
-												<option value="REG-164">REG-164</option>
-												<option value="FDJ-165">FDJ-165</option>
-												<option value="REG-165">REG-165</option>
-											</select> <label class="form-label select-label">Batch Number</label>
-										</div>
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<select name="batchMode" class="form-select" required>
+											<option value="">Select Batch Mode</option>
+											<option value="Online">Online</option>
+											<option value="Offline">Offline</option>
+										</select>
 									</div>
-									<div class="mt-2 pt-2 d-flex justify-content-center">
-										<input class="btn btn-primary btn-lg" type="submit"
-											value="Submit" />
+									<div class="col-md-6">
+										<select name="batchNumber" class="form-select" required>
+											<option value="">Select Batch Number</option>
+											<c:forEach var="i" begin="160" end="165">
+												<option value="FDJ-${i}">FDJ-${i}</option>
+												<option value="REG-${i}">REG-${i}</option>
+											</c:forEach>
+										</select>
 									</div>
-								</form>
-							</div>
+								</div>
+
+								<div class="text-center">
+									<input type="submit" value="Submit" class="btn btn-primary">
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-
-		<section class="view" style="height: 530px" id="view">
-			<div class="text-center w-100">
-				<form action="search" class="w-100">
-					<select class="select form-control-sm border border-primary"
-						name="batchNumber">
-						<option value="#" slected>Select Batch Number</option>
+		<!-- View Section -->
+		<section class="view mt-3" id="view">
+			<div class="text-center mb-2">
+				<form action="search" class="d-inline-block">
+					<select name="batchNumber" class="form-select d-inline w-auto border border-primary">
+						<option value="#">Select Batch Number</option>
 						<option value="FDJ-160">FDJ-160</option>
 						<option value="REG-160">REG-160</option>
 						<option value="FDJ-161">FDJ-161</option>
-						<option value="REG-161">REG-162</option>
-
+						<option value="REG-161">REG-161</option>
 					</select>
-					<button class="btn btn-outline-primary mb-1">Search</button>
+					<button class="btn btn-outline-primary">Search</button>
 				</form>
-				<marquee>
-					<h1 style="color: red;">${message }</h1>
-				</marquee>
+				<marquee><h1 style="color: red;">${message}</h1></marquee>
 			</div>
-			<h1 class="text-center">Student Details..!</h1>
-			<table class="table table-hover" style="font-size: small">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Student Name</th>
-						<th>Student Email</th>
-						<th>Age</th>
-						<th>College Name</th>
-						<th>Course Name</th>
-						<th>Bath No</th>
-						<th>Mode</th>
-						<th>Fees Received</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${data}" var="s">
-						<tr>
-							<td>${s.studentId}</td>
-							<td>${s.studentFullName}</td>
-							<td>${s.studentEmail}</td>
-							<td>${s.studentAge}</td>
-							<td>${s.studentCollegeName}</td>
-							<td>${s.studentCourse}</td>
-							<td>${s.batchNumber}</td>
-							<td>${s.batchMode}</td>
-							<td>${s.feesPaid}</td>
-							<td>
-								<div class="btn-group btn-group-sm" role="group" aria-label="...">
-									<button class="btn btn-outline-success">PayFees</button>
-									<button class="btn btn-outline-primary">Shift  Batch</button>
-									<button class="btn btn-outline-danger">Remove</button>
 
-								</div>
+			<h3 class="text-center text-dark mb-3">Student Details</h3>
 
-							</td>
-
-						</tr>
-					</c:forEach>
-
-				</tbody>
-
-			</table>
-
+			<form name="fn" method="post">
+				<div class="table-responsive px-3">
+					<table class="table table-bordered table-hover align-middle">
+						<thead class="table-light">
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Age</th>
+								<th>College</th>
+								<th>Course</th>
+								<th>Batch</th>
+								<th>Mode</th>
+								<th>Fees</th>
+								<th>Select</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${data}" var="s">
+								<tr>
+									<td>${s.studentId}</td>
+									<td>${s.studentFullName}</td>
+									<td>${s.studentEmail}</td>
+									<td>${s.studentAge}</td>
+									<td>${s.studentCollegeName}</td>
+									<td>${s.studentCourse}</td>
+									<td>${s.batchNumber}</td>
+									<td>${s.batchMode}</td>
+									<td>${s.feesPaid}</td>
+									<td><input type="radio" name="id" value="${s.studentId}"></td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-outline-success btn-sm" onclick="fees()">Pay Fees</button>
+											<button type="button" class="btn btn-outline-primary btn-sm" onclick="batch()">Shift Batch</button>
+											<button type="button" class="btn btn-outline-danger btn-sm" onclick="remove()">Remove</button>
+										</div>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</form>
 		</section>
 	</div>
-</body>
 
+</body>
 </html>
