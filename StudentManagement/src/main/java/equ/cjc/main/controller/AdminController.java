@@ -21,7 +21,6 @@ public class AdminController {
 
 	@RequestMapping("/")
 	public String prelogin() {
-		System.out.println("login page");
 		return "login";
 	}
 
